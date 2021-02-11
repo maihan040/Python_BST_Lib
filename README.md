@@ -9,7 +9,7 @@ interact with the binary search tree to perform the desired operation, as well a
 
 Motivation for this project was twofold: 
   
-  -> Become knowledgeable about git/gibhub
+  -> Learn to become proficient with git/github
   
   -> Provide a resource of Python tied together with popular Computer Science concepts
 
