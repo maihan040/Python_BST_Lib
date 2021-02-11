@@ -14,7 +14,7 @@ Motivation for this project was twofold:
 
 ## Tech/framework used:
 
-  Python version 3.8.5
+  * Bullet list Python version 3.8.5
  
 ## Features:
 
