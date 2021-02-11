@@ -9,8 +9,9 @@ interact with the binary search tree to perform the desired operation, as well a
 
 Motivation for this project was twofold: 
   
-  -Become knowledgeable about git/gibhub
-  -Provide a resource of Python tied together with popular Computer Science concepts
+  -> Become knowledgeable about git/gibhub
+  
+  -> Provide a resource of Python tied together with popular Computer Science concepts
 
 # Tech/framework used:
 
