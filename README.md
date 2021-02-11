@@ -21,5 +21,10 @@ Motivation for this project was twofold:
 
   Code will have heavy documentation throughout, which serves to clearly show the operation of each function/class.
   Relevant sections are clearly marked, to make it easer for readers to understand the flow of the overall design
+
+# Contents:
+  
+  BST_Node.py: class file for implementing a binary search tree node that will be used to build the tree
+  BST_Lib.py: module consisting of the many possible operations that can be applied to a binary search tree
  
  
