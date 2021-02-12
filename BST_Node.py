@@ -11,7 +11,7 @@
 ################################## Class Definition #####################################
 #                                                                                       #
 #Notes: Initially, nodes will have no children which is why the "left" and "right"      #
-#       attributes are refering to "None"                                               #
+#       attributes are referring to "None"                                               #
 #                                                                                       #
 #       Should the user not supply a data value for the "vaL" attribute a "NaN"         #
 #       (not a number) will be added by default to indicate that this                   #
