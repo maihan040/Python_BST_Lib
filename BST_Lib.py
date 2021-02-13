@@ -20,9 +20,9 @@ import BST_Node
 ################################### Functions ###########################################
 #                                                                                       #
 # BST_Node.py: This will be the main module needed in order to build the binary search  #
-#	       tree.							                #
-#											#
-# Following functions are defined below:						#
+#	           tree.													                #
+#																						#
+# Following functions are defined below:												#
 #########################################################################################
 
 
