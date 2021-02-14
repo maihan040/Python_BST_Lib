@@ -1,7 +1,7 @@
 '''
 	BST_Lib.py
 
-	Module to define the main functions that can be carried out on a binary search tree
+	Module to define the functions that can be carried out on a binary search tree
 
 	Created: 02/12/2021
 
