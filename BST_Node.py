@@ -10,7 +10,7 @@
 
 ################################## Class Definition #####################################
 #                                                                                       #
-#Notes: Initially, nodes will have no children which is why the "left" and "right"      #
+# Notes: Initially, nodes will have no children which is why the "left" and "right"     #
 #       attributes are referring to "None"                                              #
 #                                                                                       #
 #       Should the user not supply a data value for the "vaL" attribute, a "NaN"        #
@@ -20,16 +20,12 @@
 
 class BST_Node:
     
-    #
     #define default values that will be used for each instance
-    #
     def __init__(self, data = "NaN", left=None, right=None):
         self.val = data
         self.right = right
         self.left = left
     
-    #
     #debug "__repr__" method to help out for debugging 
-    #
     def __repr__(self):
         return f"(Node val: {self.val})"

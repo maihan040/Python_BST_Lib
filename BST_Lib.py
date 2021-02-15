@@ -23,7 +23,11 @@ import BST_Node
 #												#
 #												#
 # Following functions are defined below:							#
-#												#
+#	append__node    									#
+#       preorder_print                                                                          #
+#       inorder_print                                                                           #
+#       postorder_print                                                                         #
+#                                                                                               #
 #################################################################################################
 
 ##################################### Append Function ###########################################
@@ -34,14 +38,15 @@ import BST_Node
 # or equal to the current node (the parent) value, and the right child being greater		#
 # than the parent										#
 #												#	
-# Input parameters: "root" which is the root of the current binary search tree where user	#
+# Input parameters: "root" BST_Node object indicating the current binary search tree where user	#
 # wishes to add a new node "val" 								#
 # 		"val" the value of the new node that will need to be added to the tree tree.	#
 # 												#
 # Output: None											#
 #												#
 #################################################################################################
-def append_bst(root, val): 
+
+def append_node(root, val): 
 
 	#validation check 
 	if root == None: 
@@ -49,9 +54,107 @@ def append_bst(root, val):
 
 	#recursively check which leaf will be the suited parent for this value 
 	if root.val <= val: 
-		root.right = append_bst(root.right, val)
+		root.right = append_node(root.right, val)
 	else: #traverse the left side 
-		root.left = append_bst(root.left, val)
+		root.left = append_node(root.left, val)
 
 	#return the root 
 	return root
+
+##################################### Print Functions ###########################################
+#												#
+# Binary trees can be printed in three different ways that print the values of each parent node #
+# along the values of each of their children. The ordering can be as follows:                   #
+#                                                                                               #
+#       Inorder   - left child node value, parent node value, and right child node value        #
+#       Preorder  - parent node value, left child node value, and right child node value        #
+#       Postorder - left child node value, right child node value, and parent node value        #
+#                                                                                               #
+#       These functions work by recursively calling themselves in determining the next node     #
+#                                                                                               #
+# Input parameters: root" BST_Node object indicating the current binary search tree             #
+#                        							                #
+# Output: String object showing the order of the node values					#
+#												#
+#################################################################################################
+
+def preorder_print(root):
+
+        #local variables
+        result = []
+
+        #helper function that will recursively traverse through the tree
+        def recurse_preorder(node):
+
+                #base case
+	        if node == None: 
+	                return 
+        
+	        #add the current node to the "results" list 
+	        result.append(node.val)
+
+	        #move on to left child 
+	        recurse_preorder(root.left)
+
+	        #move on to right child 
+	        recurse_preorder(root.right)
+        
+        #call the recursive helper method 
+        recurse_preorder(root)
+
+        #return the result 
+        return result
+
+def inorder_print(root):
+
+        #local variables 
+        result = []
+
+        #helper function that will recursively traverse through the tree
+        def recurse_inorder(node):
+
+	        #base case 
+	        if node == None: 
+	        	return 
+
+	        #move on to left child 
+	        recurse_inorder(node.left)
+
+	        #add the current node to the "results" list
+	        result.append(node.val)
+
+	        #move on to the right child  
+	        recurse_inorder(node.right)
+        
+        #call the helper function 
+        recurse_inorder(root)
+
+        #return the result 
+        return result
+
+def postorder_print(root):
+
+        #local variables 
+        result = [] 
+
+        #helper function that will recursively traverse through the tree
+        def recurse_postorder(node):
+
+	        #base case
+	        if node == None: 
+	        	return 
+
+	        #move on to the left child 
+	        recurse_postorder(node.left)
+
+	        #move on to the right child 
+	        recurse_postorder(node.right)
+
+	        #add the current node to the "results" list
+	        result.append(node.val)
+        
+        #call the helper function 
+        recurse_postorder(root)
+
+        #return the result 
+        return result
