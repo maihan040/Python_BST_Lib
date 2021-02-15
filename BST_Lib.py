@@ -45,7 +45,6 @@ import BST_Node
 # Output: None											#
 #												#
 #################################################################################################
-
 def append_node(root, val): 
 
 	#validation check 
@@ -77,7 +76,6 @@ def append_node(root, val):
 # Output: String object showing the order of the node values					#
 #												#
 #################################################################################################
-
 def preorder_print(root):
 
         #local variables
@@ -105,6 +103,7 @@ def preorder_print(root):
         #return the result 
         return result
 
+
 def inorder_print(root):
 
         #local variables 
@@ -131,6 +130,7 @@ def inorder_print(root):
 
         #return the result 
         return result
+
 
 def postorder_print(root):
 
