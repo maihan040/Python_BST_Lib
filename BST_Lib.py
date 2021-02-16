@@ -47,17 +47,17 @@ import BST_Node
 #################################################################################################
 def append_node(root, val): 
 
-	#validation check 
+	# validation check 
 	if root == None: 
-		return BST_Node.Node(val) 
+		return BST_Node.BST_Node(val) 
 
-	#recursively check which leaf will be the suited parent for this value 
+	# recursively check which leaf will be the suited parent for this value 
 	if root.val <= val: 
 		root.right = append_node(root.right, val)
 	else: #traverse the left side 
 		root.left = append_node(root.left, val)
 
-	#return the root 
+	# return the root 
 	return root
 
 ##################################### Print Functions ###########################################
@@ -78,83 +78,74 @@ def append_node(root, val):
 #################################################################################################
 def preorder_print(root):
 
-        #local variables
-        result = []
-
-        #helper function that will recursively traverse through the tree
+        # helper function that will recursively traverse through the tree
         def recurse_preorder(node):
 
-                #base case
+                # base case
 	        if node == None: 
 	                return 
         
-	        #add the current node to the "results" list 
-	        result.append(node.val)
+	        # print the current node 
+	        print(str(node.val), end = ' ')
 
-	        #move on to left child 
-	        recurse_preorder(root.left)
+	        # move on to left child 
+	        recurse_preorder(node.left)
 
-	        #move on to right child 
-	        recurse_preorder(root.right)
+	        # move on to right child 
+	        recurse_preorder(node.right)
         
-        #call the recursive helper method 
+        # call the recursive helper method 
         recurse_preorder(root)
-
-        #return the result 
-        return result
+        
+        # add a new line 
+        print()
 
 
 def inorder_print(root):
 
-        #local variables 
-        result = []
-
-        #helper function that will recursively traverse through the tree
+        # helper function that will recursively traverse through the tree
         def recurse_inorder(node):
 
-	        #base case 
+	        # base case 
 	        if node == None: 
 	        	return 
 
-	        #move on to left child 
+	        # move on to left child 
 	        recurse_inorder(node.left)
 
-	        #add the current node to the "results" list
-	        result.append(node.val)
+                # print the current node 
+	        print(str(node.val), end = ' ')
 
-	        #move on to the right child  
+	        # move on to the right child  
 	        recurse_inorder(node.right)
         
-        #call the helper function 
+        # call the helper function 
         recurse_inorder(root)
 
-        #return the result 
-        return result
+        # add a new line 
+        print()
 
 
 def postorder_print(root):
 
-        #local variables 
-        result = [] 
-
-        #helper function that will recursively traverse through the tree
+        # helper function that will recursively traverse through the tree
         def recurse_postorder(node):
 
-	        #base case
+	        # base case
 	        if node == None: 
 	        	return 
 
-	        #move on to the left child 
+	        # move on to the left child 
 	        recurse_postorder(node.left)
 
-	        #move on to the right child 
+	        # move on to the right child 
 	        recurse_postorder(node.right)
 
-	        #add the current node to the "results" list
-	        result.append(node.val)
+                # print the current node 
+	        print(str(node.val), end = ' ')
         
-        #call the helper function 
+        # call the helper function 
         recurse_postorder(root)
 
-        #return the result 
-        return result
+        # add a new line 
+        print()

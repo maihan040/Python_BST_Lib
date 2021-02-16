@@ -20,12 +20,12 @@
 
 class BST_Node:
     
-    #define default values that will be used for each instance
+    # define default values that will be used for each instance
     def __init__(self, data = "NaN", left=None, right=None):
         self.val = data
         self.right = right
         self.left = left
     
-    #debug "__repr__" method to help out for debugging 
+    # debug "__repr__" method to help out for debugging 
     def __repr__(self):
-        return f"(Node val: {self.val})"
+        return f"(Node val: {self.val}, Left child: {self.left}, Right child: {self.right})"
