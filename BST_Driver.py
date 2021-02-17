@@ -40,14 +40,14 @@ import BST_Node as node
 def test_append_function(root):
 
         # add random numbers to the tree
-        bst.append_node(root, 3)
-        bst.append_node(root, 7)
         bst.append_node(root, 4)
+        bst.append_node(root, 3)
         bst.append_node(root, 2)
+        bst.append_node(root, 1)
         bst.append_node(root, 6)
+        bst.append_node(root, 7)
         bst.append_node(root, 8)
         bst.append_node(root, 9)
-        bst.append_node(root, 1)
 
 def test_print_functions(root): 
 
@@ -64,6 +64,15 @@ def test_print_functions(root):
         bst.postorder_print(root)
         print()
 
+def test_balancing_function(root): 
+
+        print("Current tree structure before balancing: ")
+        print(root.__repr__())
+        print()
+        root = bst.balance_bst(root)
+        print("Tree structure after balancing: ")
+        print(root.__repr__())
+        print()
 
 ############################################# Main ##############################################
 
@@ -86,3 +95,6 @@ print()
 # Test Print Functions 
 test_print_functions(root)
 print()
+
+# Test the balancing function 
+test_balancing_function(root)
