@@ -6,6 +6,8 @@
 	Created: 02/15/2021
 
 	Verison: 1.0
+        
+        Requires: "BST_Lib.py" and "BST_Node.py" modules 
 '''
 
 ######################################### Imports ###############################################

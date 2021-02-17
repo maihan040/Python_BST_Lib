@@ -76,7 +76,10 @@ def append_node(root, val):
 # Output: String object showing the order of the node values					#
 #												#
 #################################################################################################
-def preorder_print(root):
+def get_preorder(root):
+
+    #local variables
+    order = []
 
         # helper function that will recursively traverse through the tree
         def recurse_preorder(node):
@@ -85,8 +88,8 @@ def preorder_print(root):
 	        if node == None: 
 	                return 
         
-	        # print the current node 
-	        print(str(node.val), end = ' ')
+	        # append the current node to the list  
+	        order.append(node.val)
 
 	        # move on to left child 
 	        recurse_preorder(node.left)
@@ -97,11 +100,14 @@ def preorder_print(root):
         # call the recursive helper method 
         recurse_preorder(root)
         
-        # add a new line 
-        print()
+        # return the list 
+        return order
 
 
-def inorder_print(root):
+def get_inorder(root):
+
+    #local variables 
+    order = [] 
 
         # helper function that will recursively traverse through the tree
         def recurse_inorder(node):
@@ -113,8 +119,8 @@ def inorder_print(root):
 	        # move on to left child 
 	        recurse_inorder(node.left)
 
-                # print the current node 
-	        print(str(node.val), end = ' ')
+                # append the current node to the list 
+	        order.append(node.val)
 
 	        # move on to the right child  
 	        recurse_inorder(node.right)
@@ -122,11 +128,14 @@ def inorder_print(root):
         # call the helper function 
         recurse_inorder(root)
 
-        # add a new line 
-        print()
+        # return the list 
+        return order
 
 
-def postorder_print(root):
+def get_postorder(root):
+
+    #local variables
+    order = [] 
 
         # helper function that will recursively traverse through the tree
         def recurse_postorder(node):
@@ -141,11 +150,11 @@ def postorder_print(root):
 	        # move on to the right child 
 	        recurse_postorder(node.right)
 
-                # print the current node 
-	        print(str(node.val), end = ' ')
+                # append the current node to the list 
+	        order.append(node.val)
         
         # call the helper function 
         recurse_postorder(root)
 
-        # add a new line 
-        print()
+        # return the list 
+        return order
