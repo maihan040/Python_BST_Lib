@@ -21,7 +21,7 @@
 class BST_Node:
     
     # define default values that will be used for each instance
-    def __init__(self, data = "NaN", left=None, right=None):
+    def __init__(self, data = None, left=None, right=None):
         self.val = data
         self.right = right
         self.left = left

@@ -39,7 +39,12 @@ import BST_Node as node
 
 def test_append_function(root):
 
+        print("Before appending: ")
+        print(root.__repr__())
+        print()
+
         # add random numbers to the tree
+        bst.append_node(root, 5)
         bst.append_node(root, 4)
         bst.append_node(root, 3)
         bst.append_node(root, 2)
@@ -48,6 +53,11 @@ def test_append_function(root):
         bst.append_node(root, 7)
         bst.append_node(root, 8)
         bst.append_node(root, 9)
+
+        #print the result again 
+        print("After appending: ")
+        print(root.__repr__())
+        print()
 
 def test_print_functions(root): 
 
@@ -77,24 +87,13 @@ def test_balancing_function(root):
 ############################################# Main ##############################################
 
 # Create tree 
-root = node.BST_Node(5)
+root = node.BST_Node()
 
 # Test Append Function 
-print("Before appending: ")
-print(root.__repr__())
-print()
-
-# call the append function 
 test_append_function(root)
 
-#print the result again 
-print("After appending: ")
-print(root.__repr__())
-print()
-
 # Test Print Functions 
-test_print_functions(root)
-print()
+# test_print_functions(root)
 
 # Test the balancing function 
-test_balancing_function(root)
+# test_balancing_function(root)
