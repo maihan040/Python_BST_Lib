@@ -5,6 +5,8 @@
 
 	Created: 02/15/2021
 
+        Last Updated: 02/18/2021
+
 	Verison: 1.0
         
         Requires: "BST_Lib.py" and "BST_Node.py" modules 
@@ -12,12 +14,14 @@
 
 ######################################### Imports ###############################################
 #												#
+# BST.py: BST tree module which will contain all the individual nodes of the tree               #
 # BST_Lib.py: BST library module to have access to all the functions to test 	                #
 # BST_Node.py: BST Node used to build the tree                                                  #
 #												#
 #################################################################################################
-import BST_Lib as bst
-import BST_Node as node
+from BST import BST 
+import BST_Lib
+import BST_Node
 
 ########################################## MAIN #################################################
 #												#
@@ -30,67 +34,66 @@ import BST_Node as node
 #												#
 # Functions which will be used to test each of the designed functions.                          #
 #                                                                                               #
-#                                                                                               #
 # Input parameters: root" BST_Node object indicating the current binary search tree             #
 #                        							                #
 # Output: None, each function will print its result     					#
 #												#
 #################################################################################################
 
-def test_append_function(root):
+def test_append_function(BST):
 
         print("Before appending: ")
-        print(root.__repr__())
+        print(BST.root.__repr__())
         print()
 
         # add random numbers to the tree
-        bst.append_node(root, 5)
-        bst.append_node(root, 4)
-        bst.append_node(root, 3)
-        bst.append_node(root, 2)
-        bst.append_node(root, 1)
-        bst.append_node(root, 6)
-        bst.append_node(root, 7)
-        bst.append_node(root, 8)
-        bst.append_node(root, 9)
+        BST_Lib.append_node(BST, 5)
+        BST_Lib.append_node(BST, 4)
+        BST_Lib.append_node(BST, 3)
+        BST_Lib.append_node(BST, 2)
+        BST_Lib.append_node(BST, 1)
+        BST_Lib.append_node(BST, 6)
+        BST_Lib.append_node(BST, 7)
+        BST_Lib.append_node(BST, 8)
+        BST_Lib.append_node(BST, 9)
 
         #print the result again 
         print("After appending: ")
-        print(root.__repr__())
+        print(BST.root.__repr__())
         print()
 
-def test_print_functions(root): 
+def test_print_functions(BST): 
 
         # print the tree after all the new elements have been added, as well as testing the other orders
         print("Current tree structure (inorder): " )
-        bst.inorder_print(root)
+        BST.root.inorder_print(BST.root)
         print()
 
         print("Current tree structure after appending elements (preorder): " )
-        bst.preorder_print(root)
+        BST.root.preorder_print(BST.root)
         print()
 
         print("Current tree structure (postorder): " )
-        bst.postorder_print(root)
+        BST.root.postorder_print(BST.root)
         print()
 
-def test_balancing_function(root): 
+def test_balancing_function(BST): 
 
         print("Current tree structure before balancing: ")
-        print(root.__repr__())
+        print(BST.root.__repr__())
         print()
-        root = bst.balance_bst(root)
+        root = BST.root.balance_bst(BST)
         print("Tree structure after balancing: ")
-        print(root.__repr__())
+        print(BST.root.__repr__())
         print()
 
 ############################################# Main ##############################################
 
 # Create tree 
-root = node.BST_Node()
+BST_Tree = BST()
 
 # Test Append Function 
-test_append_function(root)
+test_append_function(BST_Tree)
 
 # Test Print Functions 
 # test_print_functions(root)

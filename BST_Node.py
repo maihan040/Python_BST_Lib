@@ -7,6 +7,8 @@
 
 	Created: 02/11/2021
 
+    Last Updated: 02/18/2021
+
 	Verison: 1.0
 '''
 
@@ -15,16 +17,15 @@
 # Notes: Initially, nodes will have no children which is why the "left" and "right"     #
 #       attributes are referring to "None"                                              #
 #                                                                                       #
-#       Should the user not supply a data value for the "vaL" attribute, then that      #
-#       value will default to "None" indicating that this node doesn't currently        #
-#       contain a useful value                                                          #
+#       User should always pass a value for the new node to be created, but left and    #
+#       right children fields are optional                                              #
 #                                                                                       #
 #########################################################################################
 
 class BST_Node:
     
     # define default values that will be used for each instance
-    def __init__(self, data = None, left=None, right=None):
+    def __init__(self, data, left=None, right=None):
         self.val = data
         self.right = right
         self.left = left

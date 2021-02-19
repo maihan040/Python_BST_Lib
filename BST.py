@@ -8,6 +8,8 @@
 
 	Created: 02/18/2021
 
+	Last Updated: 02/18/2021
+
 	Verison: 1.0
 '''
 
@@ -16,7 +18,7 @@
 # BST_Node.py: BST Node used to build the tree                                                  #
 #												#
 #################################################################################################
-import BST_Node as node
+import BST_Node
 
 ####################################### Class Definition ########################################
 #                                                                                       	#
@@ -29,14 +31,22 @@ import BST_Node as node
 
 class BST:
 
-	# no arg init method  
-	def __init__(self):
-		root = node.BST_Node()
+	# init method. Checks to see whether the user supplied a value for the value 
+	# and will take the appropriate action in constructing the node 
+	def __init__(self, val = None):
 
-	# init method with user supplied value for the root of the tree	
-	def __init__(self, val):
-		root = node.BST_Node(val)
+		if val == None: 
+			self.root = None
+		else: 
+			self.root = BST_Node.BST_Node(val)
+
 	
-	# repr() method for debuging. Passing this on to the BST_Node repr() method
+	# debug "__repr__" method to help out for debugging 
 	def __repr__(self):
-		self.root.repr()
+
+		# delegate the function to the tree's root (BST_Node) instance
+		if isinstance(self.root, BST_Node.BST_Node):
+			return self.root.__repr__()
+		else: 
+			return f"(Tree is empty)"
+	
