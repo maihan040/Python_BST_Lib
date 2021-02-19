@@ -50,28 +50,35 @@ import BST_Node
 #################################################################################################
 def append_node(BST, val): 
 
-	# check whether the passed BST has any nodes
+	# check whether the passed BST is empty. In which case all that's needed is to have the 
+	# root contain "val" and the method is done with it's job
 	if BST.root == None: 
 		BST.root = BST_Node.BST_Node(val)
 		return
 
 	# helper function to traverse the tree to find the right location where to append the new 
 	# value in the tree
-	def find_leaf_to_append_node(node):
+	def append_node_to_leaf(node, key):
 
 		# base case to indicate the recursion has bottomed out
+		# simply create a new BST_Node object and return that to
+		# the caller 
 		if node == None: 
-			return BST_Node.BST_Node(val)
+			return BST_Node.BST_Node(key)
 
 		# recursively check which leaf will be the suited parent for this value 
-		if node.val <= val: 
-			node.right = find_leaf_to_append_node(node.right)
+		elif node.val <= val: 
+			node.right = append_node_to_leaf(node.right, key)
 
-		else: #traverse the left side 
-			node.left = find_leaf_to_append_node(node.left)
+		# traverse the left side 
+		else: 
+			node.left = append_node_to_leaf(node.left, key)
+		
+		# return the node which acts that the current "root" during this recursive call
+		return node
 	
 	# call the helper function 
-	find_leaf_to_append_node(BST.root)
+	append_node_to_leaf(BST.root, val)
 
 ##################################### Order Functions ###########################################
 #                                               						#

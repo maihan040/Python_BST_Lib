@@ -19,7 +19,7 @@
 # BST_Node.py: BST Node used to build the tree                                                  #
 #												#
 #################################################################################################
-from BST import BST 
+import BST
 import BST_Lib
 import BST_Node
 
@@ -56,7 +56,7 @@ def test_append_function(BST):
         BST_Lib.append_node(BST, 7)
         BST_Lib.append_node(BST, 8)
         BST_Lib.append_node(BST, 9)
-
+  
         #print the result again 
         print("After appending: ")
         print(BST.root.__repr__())
@@ -90,7 +90,7 @@ def test_balancing_function(BST):
 ############################################# Main ##############################################
 
 # Create tree 
-BST_Tree = BST()
+BST_Tree = BST.BST()
 
 # Test Append Function 
 test_append_function(BST_Tree)
