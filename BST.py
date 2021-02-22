@@ -45,6 +45,7 @@ class BST:
 	def __repr__(self):
 
 		# delegate the function to the tree's root (BST_Node) instance
+		# if the tree contains any nodes
 		if isinstance(self.root, BST_Node.BST_Node):
 			return self.root.__repr__()
 		else: 

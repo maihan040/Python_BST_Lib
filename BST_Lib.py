@@ -23,7 +23,7 @@ import BST_Node
 ####################################### Functions ###############################################
 #                                               						#
 # Following functions are defined below:                            				#
-#   	append__node                                        					#
+#   	insert__node                                        					#
 #       preorder_print                                                                          #
 #       inorder_print                                                                           #
 #       postorder_print                                                                         #
@@ -33,7 +33,7 @@ import BST_Node
 #                                                                                               #
 #################################################################################################
 
-##################################### Append Function ###########################################
+###################################### Inser Function ###########################################
 #                                               						#
 # Append function. This will add a new element to the tree in the corresponding order       	#
 #                                               						#
@@ -48,7 +48,7 @@ import BST_Node
 # Output: None                                          					#
 #                                               						#
 #################################################################################################
-def append_node(BST, val): 
+def insert_node(BST, val): 
 
 	# check whether the passed BST is empty. In which case all that's needed is to have the 
 	# root contain "val" and the method is done with it's job
@@ -58,7 +58,7 @@ def append_node(BST, val):
 
 	# helper function to traverse the tree to find the right location where to append the new 
 	# value in the tree
-	def append_node_to_leaf(node, key):
+	def insert(node, key):
 
 		# base case to indicate the recursion has bottomed out
 		# simply create a new BST_Node object and return that to
@@ -68,17 +68,17 @@ def append_node(BST, val):
 
 		# recursively check which leaf will be the suited parent for this value 
 		elif node.val <= val: 
-			node.right = append_node_to_leaf(node.right, key)
+			node.right = insert(node.right, key)
 
 		# traverse the left side 
 		else: 
-			node.left = append_node_to_leaf(node.left, key)
+			node.left = insert(node.left, key)
 		
 		# return the node which acts that the current "root" during this recursive call
 		return node
 	
 	# call the helper function 
-	append_node_to_leaf(BST.root, val)
+	insert(BST.root, val)
 
 ##################################### Order Functions ###########################################
 #                                               						#
@@ -93,18 +93,19 @@ def append_node(BST, val):
 #                                                                                               #
 #       These functions work by recursively calling themselves in determining the next node     #
 #                                                                                               #
-# Input parameters: "BST" bst tree object indicating the current binary search tree             #
+# Input parameters: "bst_root" root node of bst tree object indicating the current binary	# 
+# 		    search tree             							#
 #                                                                   				#
 # Output: List object showing the order of the node values, as per the ordering chosen		#
 #                                               						#
 #################################################################################################
-def get_bst_preorder(BST):
+def get_bst_preorder(bst_root):
 
 	#local variables
 	order = []
 
 	# helper function that will recursively traverse through the tree per the specified order
-	def recurse_preorder(node):
+	def walk_bst_preorder(node):
 		
 		# base case
 		if node == None: 
@@ -114,69 +115,69 @@ def get_bst_preorder(BST):
 		order.append(node.val)
 		
 		# move on to left child 
-		recurse_preorder(node.left)
+		walk_bst_preorder(node.left)
 		
 		# move on to right child 
-		recurse_preorder(node.right)
+		walk_bst_preorder(node.right)
 	
 	# call the recursive helper method 
-	recurse_preorder(BST.root)
+	walk_bst_preorder(bst_root)
 
 	# return the list 
 	return order
 
 
-def get_bst_inorder(BST):
+def get_bst_inorder(bst_root):
 
 	#local variables 
 	order = [] 
 
 	# helper function that will recursively traverse through the tree per the specified order
-	def recurse_inorder(node):     
+	def walk_bst_inorder(node):     
 	
 		# base case 
 		if node == None: 
 			return 
 	
 		# move on to left child 
-		recurse_inorder(node.left)     
+		walk_bst_inorder(node.left)     
 	
 		# append the current node to the list 
 		order.append(node.val) 
 	
 		# move on to the right child  
-		recurse_inorder(node.right)
+		walk_bst_inorder(node.right)
 
 	# call the helper function 
-	recurse_inorder(BST.root)  
+	walk_bst_inorder(bst_root)  
 	
 	# return the list 
 	return order
 
 
-def get_bst_postorder(BST):
+def get_bst_postorder(bst_root):
 
 	#local variables
 	order = [] 
 
 	# helper function that will recursively traverse through the tree per the specified order
-	def recurse_postorder(node):
+	def walk_bst_postorder(node):
 		
 		# base case
 		if node == None: 
 			return 
 		
 		# move on to the left child 
-		recurse_postorder(node.left)
+		walk_bst_postorder(node.left)
 		
 		# move on to the right child 
-		recurse_postorder(node.right)
+		walk_bst_postorder(node.right)
 		
 		# append the current node to the list 
 		order.append(node.val)
 	
 	# call the helper function 
-	recurse_postorder(BST.root)
+	walk_bst_postorder(bst_root)
 	
 	# return the list 
 	return order
@@ -192,28 +193,28 @@ def get_bst_postorder(BST):
 # Output: None, as the functions will simply print the ordering and return			#
 #                                               						#
 #################################################################################################
-def preorder_print(BST):
+def preorder_print(bst_root):
 
-	#get the "list" object which contains the ordering
-	bst_tree = get_bst_preorder(BST)
-
-	#print the contents of the list 
-	for node in bst_tree:
-		print(str(node), end=' ')
-
-def inorder_print(BST):
-
-	#get the "list" object which contains the ordering
-	bst_tree = get_bst_inorder(BST.root)
+	#get the "list" object which contains the bst preorder ordering
+	bst_tree = get_bst_preorder(bst_root)
 
 	#print the contents of the list 
 	for node in bst_tree:
 		print(str(node), end=' ')
 
-def postorder_print(BST):
+def inorder_print(bst_root):
 
-	#get the "list" object which contains the ordering
-	bst_tree = get_bst_postorder(BST.root)
+	#get the "list" object which contains the bst inorder ordering
+	bst_tree = get_bst_inorder(bst_root)
+
+	#print the contents of the list 
+	for node in bst_tree:
+		print(str(node), end=' ')
+
+def postorder_print(bst_root):
+
+	#get the "list" object which contains the postorder ordering
+	bst_tree = get_bst_postorder(bst_root)
 
 	#print the contents of the list 
 	for node in bst_tree:
@@ -233,35 +234,43 @@ def postorder_print(BST):
 #	  balanced										#
 #                                               						#
 #################################################################################################
-def balance_bst(BST): 
+def balance_bst(bst): 
 
 	# local variables 
-	bst_inorder = get_bst_inorder(BST.root)
-	new_tree = None
+	bst_inorder = get_bst_inorder(bst.root)
+	new_tree = BST.BST()
 
 	# helper function that will recursively split the "bst_inorder" list by 2
 	# and append the middle value of each of the half list to the newly created tree
-	def build_balanced_tree(root, bst_inorder, start_idx = 0, end_idx = len(bst_inorder) - 1): 
+	def build_balanced_tree(root, start_idx, end_idx): 
 
-		# base case to have the recursion bottom out. Once this point has been reached 
-		# then there is nothing left to further process 
-		if start_idx == end_idx: 
+		
+		# base case to have the recursion bottom out. 
+		# 1. Ensure the start_idx is always less than the end_idx
+		# 2. If indices are the same, then this is the last 
+		#    element that needs to be inserted in to the tree
+
+		if start_idx > end_idx:
 			return 
+
+		if start_idx == end_idx: 
+			insert_node(new_tree, bst_inorder[start_idx]) 
 
 		# compute the midpoint of the current list and use that value to build the tree
 		mid_point = (start_idx + end_idx)//2
 
 		# append the current mid value
-		append_node(new_tree, bst_inorder[mid_point])
+		insert_node(new_tree, bst_inorder[mid_point])
 
 		# recursively work on the left half of the list 
-		build_balanced_tree(new_tree, bst_inorder, start_idx, mid_point - 1)
+		build_balanced_tree(new_tree, start_idx, mid_point - 1)
 
 		# do the same for the right side of the list 
-		build_balanced_tree(new_tree, bst_inorder, mid_point + 1, end_idx)
+		build_balanced_tree(new_tree, mid_point + 1, end_idx)
+		
 	
 	# call the helper function to get the fun started 
-	build_balanced_tree(new_tree, bst_inorder)
+	build_balanced_tree(new_tree, 0, len(bst_inorder) - 1)
 	
 	# return the new tree
 	return new_tree
