@@ -82,7 +82,7 @@ def test_balancing_function(BST):
         print("Current tree structure before balancing: ")
         print(BST.root.__repr__())
         print()
-        root = BST_Lib.balance_bst(BST)
+        BST = BST_Lib.balance_bst(BST)
         print("Tree structure after balancing: ")
         print(BST.root.__repr__())
         print()
@@ -96,7 +96,7 @@ BST_Tree = BST.BST()
 test_insert_function(BST_Tree)
 
 # Test Print Functions 
-test_print_functions(BST_Tree)
+#test_print_functions(BST_Tree)
 
 # Test the balancing function 
 test_balancing_function(BST_Tree)

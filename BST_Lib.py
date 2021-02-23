@@ -220,7 +220,7 @@ def postorder_print(bst_root):
 	for node in bst_tree:
 		print(str(node), end=' ')
 
-#################################### Balance Function ###########################################
+###################################### Balance Tree #############################################
 #                                               						#
 # Function to balance the tree. Ideally you would want the tree to always be fully balanced,	#
 # meaning each node has ideally two children (provided there are enough nodes in the tree to	#
@@ -236,6 +236,11 @@ def postorder_print(bst_root):
 #################################################################################################
 def balance_bst(bst): 
 
+	# validation check 
+	if bst == None: 
+		print("Tree doesn't contain any nodes")
+		return
+	
 	# local variables 
 	bst_inorder = get_bst_inorder(bst.root)
 	new_tree = BST.BST()
@@ -255,18 +260,18 @@ def balance_bst(bst):
 
 		if start_idx == end_idx: 
 			insert_node(new_tree, bst_inorder[start_idx]) 
+		else:
+			# compute the midpoint of the current list and use that value to build the tree
+			mid_point = (start_idx + end_idx)//2
 
-		# compute the midpoint of the current list and use that value to build the tree
-		mid_point = (start_idx + end_idx)//2
+			# append the current mid value
+			insert_node(new_tree, bst_inorder[mid_point])
 
-		# append the current mid value
-		insert_node(new_tree, bst_inorder[mid_point])
+			# recursively work on the left half of the list 
+			build_balanced_tree(new_tree, start_idx, mid_point - 1)
 
-		# recursively work on the left half of the list 
-		build_balanced_tree(new_tree, start_idx, mid_point - 1)
-
-		# do the same for the right side of the list 
-		build_balanced_tree(new_tree, mid_point + 1, end_idx)
+			# do the same for the right side of the list 
+			build_balanced_tree(new_tree, mid_point + 1, end_idx)
 		
 	
 	# call the helper function to get the fun started 
@@ -274,3 +279,76 @@ def balance_bst(bst):
 	
 	# return the new tree
 	return new_tree
+
+####################################### Invert Tree #############################################
+#                                               						#
+# Function to invert the tree. After this function the BST will be a mirror reflection of what	#
+# it was before this function was called.							#
+#												#
+# Input parameters: "BST" BST tree object indicating the binary search tree that is to be       # 
+#		    invert									#
+#                                            							#
+# Output: BST, which will be a new tree object containing the exact same nodes, only now having	#
+#         a mirrored structure									#
+#                                               						#
+#################################################################################################
+def invert_tree(bst):
+
+	# validation check 
+	if bst == None: 
+		print("Tree doesn't contain any nodes")
+		return
+
+	# helper function which will swap the child nodes of each respective node 
+	def invert(node):
+
+		# base case
+		if node == None: 
+			return
+	
+		#proceed in a post order fashion while inverting the children of each node
+		invert_tree(node.left)
+		invert_tree(node.right)
+
+		#main operation, swap left and right children
+		temp = node.left
+		node.left = node.right
+		node.right = temp
+	
+	# call the helper function 
+	invert(bst.root)
+
+###################################### Min/Max Function #########################################
+#                                               						#
+# Function to find the smalles/largest value of nodes that are stored in the tree. Since the 	#
+# tree is already sorted, the function is quite simple in that it has to traverse all the way	#
+# to the left (starting from the root of the tree) to get the smallest element in the tree, and #
+# likewise to the same for the right in order to get the max value. 				#
+#												#
+# Input parameters: "BST" BST tree object indicating the binary search tree that is to be       # 
+#		    processed									#
+#                                            							#
+# Output: Tuple, containing the min/max values that were found in the tree			#
+#                                               						#
+#################################################################################################
+def min_max(bst):
+
+	# validate the tree
+	if bst == None: 
+		print("Tree is empty, no floor/ceil can be found")
+		return 
+
+	# local variables
+	min = bst.root 
+	max = bst.root
+
+	# find the min value 
+	while min.left != None: 
+		min = min.left
+	
+	# find the max value 
+	while max.right != None: 
+		max = max.right
+	
+	# return the floor and ceil values 
+	return (min.val, max.val)
