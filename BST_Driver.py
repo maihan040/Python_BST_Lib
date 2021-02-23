@@ -5,7 +5,7 @@
 
 	Created: 02/15/2021
 
-        Last Updated: 02/18/2021
+        Last Updated: 02/23/2021
 
 	Verison: 1.0
         
@@ -103,6 +103,12 @@ def test_invert_function(BST):
         print(BST.root.__repr__())
         print()
 
+def test_height_function(BST):
+
+        print("Computing the height of the tree")
+        tree_height = BST_Lib.get_tree_height(BST)
+        print("Tree has height of : " + str(tree_height))
+
 ############################################# Main ##############################################
 
 # Create tree 
@@ -121,4 +127,9 @@ test_insert_function(BST_Tree)
 #test_min_max_function(BST_Tree)
 
 # Test invert tree function 
-test_invert_function(BST_Tree)
+# test_invert_function(BST_Tree)
+
+# Test tree height function 
+test_height_function(BST_Tree)
+balanced_tree = BST_Lib.balance_bst(BST_Tree)
+test_height_function(balanced_tree)

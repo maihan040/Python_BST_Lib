@@ -5,7 +5,7 @@
 
 	Created: 02/12/2021
 
-	Last Updated: 02/22/2021
+	Last Updated: 02/23/2021
 
 	Verison: 1.0
 
@@ -30,6 +30,10 @@ import BST_Node
 #	get_bst_preorder									#
 # 	get_bst_inorder										#
 # 	get_bst_postorder									#
+#	get_tree_height										#
+#	balance_bst										#
+#	invert_tree										#
+#	min_max											#
 #                                                                                               #
 #################################################################################################
 
@@ -181,6 +185,50 @@ def get_bst_postorder(bst_root):
 	
 	# return the list 
 	return order
+
+################################### Get heigh Function ##########################################
+#                                               						#
+# Sometimes it's usefull to know the height of a tree. This function will compute this and 	#
+# return that value back to the user. 								#
+#												#
+#                                                                                               #
+# Input parameters: "BST"  bst tree object for which the height needs to be determined		# 
+#                                                                   				#
+# Output: int value indicating the height of the tree. Should the tree be empty then "0" will 	#
+#	  be returned.										#
+#                                               						#
+#################################################################################################
+def get_tree_height(BST):
+
+	# validation check 
+	if BST == None: 
+		return 0
+
+	# local variables 
+	height = 0
+
+	# helper function which will recursively call itself to compute the height of the tree
+	# essentially this will compare the heights of the children for each node picking the
+	# max height between the right/left sub tree
+	def compute_height(node): 
+
+		# base case when the recursion bottoms out: 
+		if node == None: 
+			return 0
+		
+		# local variables 
+		left_height = compute_height(node.left)
+		right_height = compute_height(node.right)
+
+		# return the max of the two plus 1 to account the level of the current node 
+		return max(left_height, right_height) + 1
+	
+	# call the helper function to start the computation 
+	height = compute_height(BST.root)
+
+	# return the computed height 
+	return height
+
 
 ##################################### Print Functions ###########################################
 #                                               						#
