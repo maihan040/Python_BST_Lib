@@ -87,6 +87,22 @@ def test_balancing_function(BST):
         print(BST.root.__repr__())
         print()
 
+def test_min_max_function(BST):
+
+        print("Searching tree for min/max values: " )
+        min_max = BST_Lib.min_max(BST)
+        print("Min: " + str(min_max[0]) + " Max : " + str(min_max[1]))
+        print()
+
+def test_invert_function(BST):
+
+        print("Tree order before inverting it: ")
+        print(BST.root.__repr__())
+        BST_Lib.invert_tree(BST)
+        print("Tree structure after inverting: " )
+        print(BST.root.__repr__())
+        print()
+
 ############################################# Main ##############################################
 
 # Create tree 
@@ -99,4 +115,10 @@ test_insert_function(BST_Tree)
 #test_print_functions(BST_Tree)
 
 # Test the balancing function 
-test_balancing_function(BST_Tree)
+#test_balancing_function(BST_Tree)
+
+# Test min/max FUnction
+#test_min_max_function(BST_Tree)
+
+# Test invert tree function 
+test_invert_function(BST_Tree)

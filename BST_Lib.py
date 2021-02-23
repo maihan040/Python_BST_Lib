@@ -5,7 +5,7 @@
 
 	Created: 02/12/2021
 
-	Last Updated: 02/18/2021
+	Last Updated: 02/22/2021
 
 	Verison: 1.0
 
@@ -306,11 +306,11 @@ def invert_tree(bst):
 		if node == None: 
 			return
 	
-		#proceed in a post order fashion while inverting the children of each node
-		invert_tree(node.left)
-		invert_tree(node.right)
+		# proceed in a post order fashion while inverting the children of each node
+		invert(node.left)
+		invert(node.right)
 
-		#main operation, swap left and right children
+		# main operation, swap left and right children
 		temp = node.left
 		node.left = node.right
 		node.right = temp
@@ -318,7 +318,7 @@ def invert_tree(bst):
 	# call the helper function 
 	invert(bst.root)
 
-###################################### Min/Max Function #########################################
+#################################### Min/Max Function ###########################################
 #                                               						#
 # Function to find the smalles/largest value of nodes that are stored in the tree. Since the 	#
 # tree is already sorted, the function is quite simple in that it has to traverse all the way	#
