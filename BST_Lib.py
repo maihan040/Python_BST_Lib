@@ -229,7 +229,6 @@ def get_tree_height(BST):
 	# return the computed height 
 	return height
 
-
 ##################################### Print Functions ###########################################
 #                                               						#
 # Printing the ordering of the nodes as per the three possible orderings (preorder, inorder,	#
